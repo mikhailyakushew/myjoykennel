@@ -18,7 +18,7 @@ section[id]{scroll-margin-top:16vh}
 
 .header{background:#fff;height:15vh;min-height:70px;display:flex;align-items:center;position:sticky;top:0;z-index:100}
 .header-inner{display:flex;justify-content:space-between;align-items:center;width:100%}
-.logo img{max-width:90px;max-height:70px;object-fit:contain}
+.logo img{max-width:90px;max-height:70px;object-fit:cover;border-radius:50%}
 .nav-list{display:flex;gap:30px}
 .nav-list a{font-weight:600;font-size:14px;transition:color .2s}
 .nav-list a:hover{color:#3a5911}
