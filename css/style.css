@@ -1,0 +1,135 @@
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Unbounded',sans-serif;color:#000;background:#fff;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+section[id]{scroll-margin-top:16vh}
+
+.container{max-width:1200px;margin:0 auto;padding:0 20px}
+.green{color:#3a5911}
+.btn{display:inline-block;padding:14px 36px;background:#3a5911;color:#fff;border-radius:8px;font-weight:500;font-size:16px;transition:background .2s;border:none;cursor:pointer;font-family:inherit}
+.btn:hover{background:#2d460d}
+
+.section-title{font-size:36px;font-weight:600;text-align:center;margin-bottom:20px}
+.section-desc{font-size:16px;text-align:center;max-width:845px;margin:0 auto 60px;color:#000;line-height:1.5}
+.divider{padding:60px 0}
+.divider span{display:block;max-width:660px;margin:0 auto;height:1px;background:#000;opacity:.2}
+
+.header{background:#fff;height:15vh;min-height:70px;display:flex;align-items:center;position:sticky;top:0;z-index:100}
+.header-inner{display:flex;justify-content:space-between;align-items:center;width:100%}
+.logo img{max-width:90px;max-height:70px;object-fit:contain}
+.nav-list{display:flex;gap:30px}
+.nav-list a{font-weight:600;font-size:14px;transition:color .2s}
+.nav-list a:hover{color:#3a5911}
+.nav-toggle{display:none;background:none;border:none;font-size:28px;cursor:pointer}
+
+.hero{background:#fff;position:relative;overflow:hidden}
+.hero-inner{display:flex;align-items:flex-start;min-height:calc(100vh - 15vh);max-width:none;margin:0;padding-left:clamp(84px,11.7vw,225px);padding-right:0;position:relative}
+.hero-text{max-width:590px;position:relative;z-index:1;padding:80px 0}
+.hero-text h1{font-size:48px;font-weight:700;margin-bottom:42px;line-height:1.28;letter-spacing:-.03em}
+.hero-text p{font-size:20px;margin-bottom:0;max-width:520px;line-height:1.45}
+.hero-text .btn{margin-top:46px;min-width:230px;text-align:center;padding:18px 36px;font-size:18px;font-weight:700;border-radius:7px}
+.hero-cover{position:absolute;top:0;right:0;width:64vw;height:100%;background-size:auto 142%;background-position:22% center;clip-path:polygon(43% 0,100% 0,72% 100%,0 100%)}
+
+.about{background:#fff;padding:60px 0}
+.about-inner{display:flex;align-items:center;gap:60px}
+.about-images{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.about-img-main{grid-row:span 2}
+.about-img-main img,.about-img-side img{width:100%;height:100%;object-fit:cover;border-radius:12px}
+.about-img-side{display:flex;flex-direction:column;gap:12px}
+.about-text{flex:1}
+.about-text h2{font-size:46px;font-weight:600;margin-bottom:24px;line-height:1.3}
+.about-text p{font-size:16px;margin-bottom:16px;line-height:1.7}
+
+.dogs{background:#f8fdf2;padding:80px 0}
+.dogs-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.dog-card{background:#fff;border-radius:15px;overflow:hidden;cursor:pointer;transition:transform .3s,box-shadow .3s}
+.dog-card:hover{transform:translateY(-6px);box-shadow:0 12px 32px rgba(0,0,0,.12)}
+.dog-card-img{width:100%;aspect-ratio:1/1.38;object-fit:cover;display:block}
+.dog-card-body{padding:16px}
+.dog-card-title{font-size:14px;font-weight:600;margin-bottom:8px;line-height:1.4}
+.dog-card-info{font-size:12px;color:#444;line-height:1.5}
+
+.puppies{background:#fff;padding:80px 0}
+.no-puppies{text-align:center;font-size:24px;font-weight:600;color:#3a5911;margin-top:20px}
+
+.services{background:#f8fdf2;padding:80px 0}
+.services-list{max-width:660px;margin:0 auto;display:flex;flex-direction:column;gap:40px}
+.service-item{padding-left:16.666%}
+.service-item h3{font-size:22px;font-weight:600;margin-bottom:8px}
+.service-item p{font-size:16px;line-height:1.6;color:#333}
+
+.certificate{background:#f8fdf2;padding:80px 0}
+.certificate-img{max-width:800px;margin:0 auto;border-radius:12px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.1)}
+.certificate-img img{width:100%;height:auto;display:block}
+
+.contacts{background:#f8fdf2;padding:80px 0}
+.contact-card{max-width:500px;margin:0 auto;text-align:center}
+.contact-photo{width:120px;height:120px;border-radius:50%;object-fit:cover;margin:0 auto 20px}
+.contact-name{font-size:20px;font-weight:600;margin-bottom:4px}
+.contact-role{font-size:14px;color:#666;margin-bottom:16px}
+.contact-phone{font-size:16px;margin-bottom:20px}
+.contact-phone a{color:#3a5911;font-weight:500}
+.social-links{display:flex;justify-content:center;gap:12px}
+.social-links a{transition:transform .2s}
+.social-links a:hover{transform:scale(1.1)}
+
+.footer{background:#fff;padding:20px 0}
+.footer p{font-size:12px;color:#999;line-height:1.4;text-align:center}
+
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:1000;justify-content:center;align-items:center;padding:20px}
+.modal-overlay.active{display:flex}
+.modal-content{background:#fff;border-radius:16px;max-width:800px;width:100%;max-height:90vh;overflow-y:auto;position:relative;padding:40px}
+.modal-close{position:absolute;top:16px;right:16px;background:none;border:none;font-size:24px;cursor:pointer;color:#666;transition:color .2s;width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:50%}
+.modal-close:hover{background:#f0f0f0;color:#000}
+.modal-detail{display:flex;gap:32px}
+.modal-detail-img{width:45%;border-radius:12px;object-fit:cover;max-height:500px}
+.modal-detail-info{flex:1}
+.modal-detail-info h2{font-size:24px;margin-bottom:20px;line-height:1.4}
+.modal-detail-info table{width:100%;border-collapse:collapse}
+.modal-detail-info td{padding:8px 0;border-bottom:1px solid #eee;font-size:14px;vertical-align:top}
+.modal-detail-info td:first-child{font-weight:600;width:40%;color:#333}
+.modal-detail-info td:last-child{color:#000}
+
+.dog-detail-page{padding:60px 0;background:#f8fdf2;min-height:calc(100vh - 15vh)}
+.back-link{display:inline-block;margin-bottom:32px;font-size:14px;font-weight:500;color:#3a5911;transition:opacity .2s}
+.back-link:hover{opacity:.7}
+.dog-detail-layout{display:flex;gap:48px;align-items:flex-start}
+.dog-detail-img-lg{width:45%;border-radius:15px;object-fit:cover;max-height:600px}
+.dog-detail-text{flex:1}
+.dog-detail-text h1{font-size:28px;margin-bottom:24px;line-height:1.4}
+.dog-detail-text table{width:100%;border-collapse:collapse}
+.dog-detail-text td{padding:10px 0;border-bottom:1px solid #ddd;font-size:14px;vertical-align:top}
+.dog-detail-text td:first-child{font-weight:600;width:40%;color:#333}
+.dog-detail-text td:last-child{color:#000}
+
+@media(max-width:980px){
+  .dog-detail-layout{flex-direction:column}
+  .dog-detail-img-lg{width:100%;max-height:400px}
+}
+
+@media(max-width:980px){
+  .nav-list{display:none;position:absolute;top:15vh;left:0;right:0;background:#fff;flex-direction:column;padding:20px;gap:16px;box-shadow:0 8px 16px rgba(0,0,0,.1)}
+  .nav-list.open{display:flex}
+  .nav-toggle{display:block}
+  .hero-inner{min-height:auto;padding:0 20px 40px;flex-direction:column;align-items:stretch}
+  .hero-text{max-width:none;padding:50px 0 32px}
+  .hero-text h1{font-size:28px}
+  .hero-text p{font-size:16px}
+  .hero-text .btn{margin-top:28px;min-width:0}
+  .hero-cover{position:relative;width:100%;height:52vw;min-height:280px;clip-path:polygon(16% 0,100% 0,84% 100%,0 100%)}
+  .about-inner{flex-direction:column}
+  .about-text h2{font-size:32px}
+  .about-images{width:100%}
+  .dogs-grid{grid-template-columns:repeat(2,1fr)}
+  .modal-detail{flex-direction:column}
+  .modal-detail-img{width:100%;max-height:300px}
+}
+
+@media(max-width:600px){
+  .dogs-grid{grid-template-columns:1fr}
+  .section-title{font-size:26px}
+  .service-item{padding-left:0}
+  .hero-text h1{font-size:24px}
+}
