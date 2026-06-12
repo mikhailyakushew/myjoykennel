@@ -84,4 +84,72 @@
       });
     });
   }
+
+  // Random jumping sheep — one jump, then vanish
+  (function () {
+    var SVG = '<svg viewBox="0 0 80 80"><circle cx="40" cy="42" r="22" fill="#f5f5f5" stroke="#ddd" stroke-width=".5"/><circle cx="28" cy="36" r="12" fill="#fff"/><circle cx="40" cy="30" r="14" fill="#fff"/><circle cx="52" cy="36" r="12" fill="#fff"/><circle cx="24" cy="46" r="9" fill="#fff"/><circle cx="56" cy="46" r="9" fill="#fff"/><ellipse cx="62" cy="42" rx="8" ry="6" fill="#fff" stroke="#ddd" stroke-width=".5"/><ellipse cx="66" cy="38" rx="4" ry="2" fill="#e8e8e8" transform="rotate(15 66 38)"/><circle cx="65" cy="41" r="1.2" fill="#555"/><circle cx="69" cy="43" r=".8" fill="#ccc"/><line x1="28" y1="60" x2="26" y2="74" stroke="#ddd" stroke-width="3" stroke-linecap="round"/><line x1="38" y1="62" x2="36" y2="76" stroke="#ddd" stroke-width="3" stroke-linecap="round"/><line x1="48" y1="62" x2="50" y2="76" stroke="#ddd" stroke-width="3" stroke-linecap="round"/><line x1="56" y1="60" x2="58" y2="74" stroke="#ddd" stroke-width="3" stroke-linecap="round"/></svg>';
+    var TEXT_TAGS = 'p,h1,h2,h3,h4,h5,h6,li,a,td,th,span,button,label,blockquote,cite,code,em,strong'.split(',');
+
+    function anyBlocked(els) {
+      for (var i = 0; i < els.length; i++) {
+        var e = els[i];
+        if (!e || e === document.body || e === document.documentElement) continue;
+        if (e.classList && e.classList.contains('sheep-container')) return true;
+        var t = e.tagName.toLowerCase();
+        if (t === 'img' || t === 'svg' || t === 'video' || t === 'canvas') return true;
+        var cs = window.getComputedStyle(e);
+        if (cs.backgroundImage !== 'none') return true;
+        if (TEXT_TAGS.indexOf(t) !== -1 && e.textContent.trim().length > 2) return true;
+      }
+      return false;
+    }
+
+    function isFree(vpX, vpY) {
+      var half = 24;
+      var checks = [[vpX, vpY]];
+      if (vpX - half >= 0 && vpY - half >= 0) checks.push([vpX - half, vpY - half]);
+      if (vpX + half <= window.innerWidth && vpY - half >= 0) checks.push([vpX + half, vpY - half]);
+      if (vpX - half >= 0 && vpY + half <= window.innerHeight) checks.push([vpX - half, vpY + half]);
+      if (vpX + half <= window.innerWidth && vpY + half <= window.innerHeight) checks.push([vpX + half, vpY + half]);
+      for (var i = 0; i < checks.length; i++) {
+        var els = document.elementsFromPoint(checks[i][0], checks[i][1]);
+        if (els && anyBlocked(els)) return false;
+      }
+      return true;
+    }
+
+    function findSpot() {
+      var vw = window.innerWidth, vh = window.innerHeight;
+      var scrollY = window.pageYOffset || document.documentElement.scrollTop;
+      for (var i = 0; i < 120; i++) {
+        var vx = 26 + Math.random() * (vw - 78);
+        var vy = 26 + Math.random() * (vh - 78);
+        if (isFree(vx, vy)) {
+          return { x: vx + (window.pageXOffset || document.documentElement.scrollLeft), y: vy + scrollY };
+        }
+      }
+      return null;
+    }
+
+    function spawn() {
+      var pos = findSpot();
+      if (!pos) return;
+      var box = document.createElement('div');
+      box.className = 'sheep-container';
+      box.style.left = pos.x + 'px';
+      box.style.top = pos.y + 'px';
+      box.innerHTML = SVG;
+      document.body.appendChild(box);
+      var inner = box.firstElementChild;
+      inner.classList.add('sheep-jump');
+      inner.addEventListener('animationend', function () { box.remove(); });
+    }
+
+    window.addEventListener('load', function () { setTimeout(spawn, 600); });
+    var timer;
+    window.addEventListener('scroll', function () {
+      clearTimeout(timer);
+      timer = setTimeout(spawn, 400);
+    });
+  })();
 })();
