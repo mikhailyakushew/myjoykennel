@@ -133,3 +133,23 @@ section[id]{scroll-margin-top:16vh}
   .service-item{padding-left:0}
   .hero-text h1{font-size:24px}
 }
+
+.sheep-container{position:absolute;pointer-events:none;z-index:50;width:52px;height:52px}
+.sheep-container svg{width:100%;height:100%;display:block;filter:drop-shadow(0 2px 6px rgba(0,0,0,.1))}
+.sheep-jump{animation:sheep-hop 1.6s cubic-bezier(.5,0,.5,1) forwards}
+@keyframes sheep-hop{
+  0%{opacity:0;transform:scale(.3) translateY(0)}
+  6%{opacity:.9;transform:scale(1.15) translateY(0)}
+  10%{opacity:1;transform:scale(.85) translateY(4px)}
+  22%{opacity:1;transform:scale(1) translateY(-50px)}
+  38%{opacity:1;transform:scale(1.1) translateY(-55px)}
+  55%{opacity:1;transform:scale(.95) translateY(-10px)}
+  72%{opacity:1;transform:scale(1.02) translateY(2px)}
+  85%{opacity:1;transform:scale(1) translateY(1px)}
+  92%{opacity:1;transform:scale(1) translateY(0)}
+  100%{opacity:0;transform:scale(.4) translateY(0)}
+}
+
+@media(max-width:768px){
+  .sheep-container{width:36px;height:36px}
+}
